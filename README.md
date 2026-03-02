@@ -3,8 +3,6 @@
 ShotGate is a configurable video shot/scene detection pipeline built on top of PySceneDetect.  
 It adds a practical **Quality Gate (QC layer)** before results are accepted, and produces structured outputs (CSV + JSON) for downstream processing.
 
----
-
 ## 🚀 Overview
 
 ShotGate is designed for production workflows where simple scene detection is not enough.
@@ -17,7 +15,6 @@ It provides:
 - Structured outputs for pipelines and analytics
 - Optional scene thumbnail generation
 
----
 
 ## ✨ Features
 
@@ -48,7 +45,6 @@ Based on rules such as:
 - Export first frame of each scene
 - Useful for quick validation
 
----
 
 ## 📁 Project Structure
 
@@ -66,7 +62,6 @@ shotgate/
 
 ````
 
----
 
 ## ⚙️ Requirements
 
@@ -76,7 +71,6 @@ shotgate/
 - OpenCV
 - FFmpeg (recommended, includes `ffprobe`)
 
----
 
 ## 🔧 Installation
 
@@ -106,8 +100,6 @@ Install dependencies:
 pip install scenedetect[pyav] pyyaml opencv-python
 ```
 
----
-
 ## ▶️ Usage
 
 Run with config file:
@@ -122,7 +114,6 @@ Override input video:
 python main.py --config config.yaml --input path/to/video.mp4
 ```
 
----
 
 ## 🧾 Configuration (YAML)
 
@@ -148,7 +139,6 @@ qc:
   max_short_shot_ratio: 0.5
 ```
 
----
 
 ## 📤 Output
 
@@ -160,7 +150,6 @@ scene_id,start_time,end_time,duration_sec
 1,00:00:02.134,00:00:05.900,3.766
 ```
 
----
 
 ### 2. JSON Decision Report
 
@@ -182,7 +171,6 @@ scene_id,start_time,end_time,duration_sec
 }
 ```
 
----
 
 ## 🚦 Exit Codes
 
@@ -192,7 +180,6 @@ scene_id,start_time,end_time,duration_sec
 
 Useful for automation and CI pipelines.
 
----
 
 ## ⚙️ How It Works
 
@@ -206,7 +193,6 @@ Useful for automation and CI pipelines.
 5. Apply QC rules
 6. Export CSV + JSON (+ optional images)
 
----
 
 ## 🧠 Quality Gate Logic
 
@@ -220,7 +206,6 @@ Typical checks:
 
 All thresholds are configurable.
 
----
 
 ## 🧪 Example
 
@@ -230,7 +215,6 @@ python main.py \
   --input trailer_1080p.mov
 ```
 
----
 
 ## 📌 Notes
 
@@ -238,7 +222,6 @@ python main.py \
 * If `ffprobe` is missing, QC may downgrade to `review`
 * Works best with standard formats (mp4, mov, etc.)
 
----
 
 ## 📬 Contact
 
@@ -252,5 +235,3 @@ If you have questions, feedback, or want to collaborate, feel free to reach out:
  
  💼 LinkedIn: [linkedin.com/in/avishai-weizman/](https://www.linkedin.com/in/avishai-weizman/)
 
-
----
