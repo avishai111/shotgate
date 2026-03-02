@@ -1,0 +1,42 @@
+# PySceneDetect + QC gate arguments for main.py
+# Run with: python main.py
+# Or:      python main.py config.yaml
+
+input_video: trailer_1080p.mov                 # Input video file path.
+output_csv: trailer_1080p_shots/trailer_1080p_shots.csv            # Output CSV path for detected shots.
+decision_json: trailer_1080p_shots/trailer_1080p_decision.json     # Output JSON path for QC decision.
+include_scenes_in_json: true                  # Include full scene list in decision_json.
+save_scene_start_images: true                # Save one image for the start of each detected scene.
+scene_start_images_dir: trailer_1080p_shots/images/                  # Optional output folder for scene start images.
+
+backend: pyav                                  # Video backend: pyav or opencv.
+
+# Detector options: adaptive | content | hash | hist | threshold
+# You can also use aliases: detect-adaptive | detect-content | detect-hash | detect-hist | detect-threshold
+detector: content                              # Scene detection algorithm.
+detector_params: {}                            # Extra kwargs for selected detector (optional map).
+
+threshold: 27.0                                # Main sensitivity threshold used by detectors.
+min_scene_len: 1                              # Minimum scene length in frames.
+luma_only: false                               # Compare only brightness channel when supported.
+show_progress: true                            # Show detection progress in terminal.
+start_in_scene: true                           # Include initial scene from frame 0.
+
+filter_rules:
+  min_duration_seconds: 0.1                    # Reject if video duration is below this.
+  max_duration_seconds: inf                    # Reject if video duration is above this.
+  min_width: 320                               # Reject if width is below this.
+  min_height: 240                              # Reject if height is below this.
+  min_fps: 10.0                                # Reject if FPS is below this.
+  max_fps: 120.0                               # Reject if FPS is above this.
+  min_shots: 1                                 # Reject if detected shots are below this.
+  max_shots: 20000                             # Reject if detected shots are above this.
+  max_cuts_per_minute: 180.0                   # Reject if cut rate exceeds this.
+  min_avg_shot_duration_seconds: 0.2           # Reject if average shot duration is too short.
+  short_shot_seconds: 0.4                      # Threshold used to classify a shot as "short".
+  max_short_shot_ratio: 0.6                    # Reject if too many shots are short.
+  review_max_cuts_per_minute: 90.0             # Mark as review if cut rate exceeds this.
+  review_min_avg_shot_duration_seconds: 1.0    # Mark as review if average shot duration is below this.
+  review_max_short_shot_ratio: 0.3             # Mark as review if short-shot ratio exceeds this.
+  require_ffprobe: false                       # Reject when ffprobe metadata is missing.
+  review_on_missing_metadata: true             # Mark as review when metadata is missing.
