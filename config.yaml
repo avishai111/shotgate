@@ -17,7 +17,7 @@ detector: content                              # Scene detection algorithm.
 detector_params: {}                            # Extra kwargs for selected detector (optional map).
 
 threshold: 27.0                                # Main sensitivity threshold used by detectors.
-min_scene_len: 1                              # Minimum scene length in frames.
+min_scene_len: 1                               # Minimum scene length in frames.
 luma_only: false                               # Compare only brightness channel when supported.
 show_progress: true                            # Show detection progress in terminal.
 start_in_scene: true                           # Include initial scene from frame 0.
@@ -34,7 +34,7 @@ filter_rules:
   max_cuts_per_minute: 180.0                   # Reject if cut rate exceeds this.
   min_avg_shot_duration_seconds: 0.2           # Reject if average shot duration is too short.
   short_shot_seconds: 0.4                      # Threshold used to classify a shot as "short".
-  max_short_shot_ratio: 0.6                    # Reject if too many shots are short.
+  max_short_shot_ratio: 1                    # Reject if too many shots are short.
   review_max_cuts_per_minute: 90.0             # Mark as review if cut rate exceeds this.
   review_min_avg_shot_duration_seconds: 1.0    # Mark as review if average shot duration is below this.
   review_max_short_shot_ratio: 0.3             # Mark as review if short-shot ratio exceeds this.
